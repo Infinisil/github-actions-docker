@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: niteo/nixpkgs-nixos-20.03:925ae0dee63cf2c59533a6258340812e5643428a
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - run: nix-shell -p hello --run hello
