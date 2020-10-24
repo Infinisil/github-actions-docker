@@ -15,5 +15,6 @@ jobs:
         - '/usr/lib/x86_64-linux-gnu/libstdc++.so.6:/lib/libstdc++.so.6'
     steps:
       #- uses: actions/checkout@main
+      - uses: 'actions/checkout@main'
       - run: '/__e/node12/bin/node --version'
         #- run: nix-shell -p hello --run hello
