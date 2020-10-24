@@ -14,5 +14,6 @@ jobs:
         - '/lib/x86_64-linux-gnu/libgcc_s.so.1:/lib/libgcc_s.so.1'
         - '/usr/lib/x86_64-linux-gnu/libstdc++.so.6:/lib/libstdc++.so.6'
     steps:
-      - uses: actions/checkout@v2.3.3
-      - run: nix-shell -p hello --run hello
+      #- uses: actions/checkout@main
+      - run: '/__e/node12/bin/node --version'
+        #- run: nix-shell -p hello --run hello
