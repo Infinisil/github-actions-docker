@@ -7,7 +7,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
+    container:
+      image: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
+      volumes:
+        - '/lib/x86_64-linux-gnu/libdl.so.2:/lib/libdl.so.2'
+        - '/lib/x86_64-linux-gnu/libgcc_s.so.1:/lib/libgcc_s.so.1'
+        - '/usr/lib/x86_64-linux-gnu/libstdc++.so.6:/lib/libstdc++.so.6'
     steps:
       - uses: actions/checkout@v2.3.3
       - run: nix-shell -p hello --run hello
