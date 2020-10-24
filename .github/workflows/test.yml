@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted 
     container:
       image: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
       volumes:
