@@ -8,15 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: niteo/nixpkgs-nixos-20.03:504f993df9a5ca63317fe9c859df19daad30aa14
+      image: infinisil/nixpkgs-nixos-unstable:1dc37370c489b610f8b91d7fdd40633163ffbafd
     steps:
-      - uses: 'actions/checkout@main'
-      - run: |
-          tmate=$(nix-build '<nixpkgs>' -A tmate)/bin/tmate
-          $tmate -S /tmp/tmate.sock new-session -d
-          $tmate -S /tmp/tmate.sock wait tmate-ready
-          while [[ -e /tmp/tmate.sock ]]; do
-            $tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
-            sleep 5
-          done
+      - run: start-tmate
       - run: nix-shell -p hello --run hello
