@@ -10,5 +10,5 @@ jobs:
     container:
       image: infinisil/nixpkgs-nixos-unstable:1dc37370c489b610f8b91d7fdd40633163ffbafd
     steps:
-      - run: start-tmate
+      - run: start-tmate &
       - run: nix-shell -p hello --run hello
