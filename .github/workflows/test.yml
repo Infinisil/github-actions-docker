@@ -6,15 +6,9 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted 
+    runs-on: ubuntu-latest
     container:
-      image: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
-      volumes:
-        - '/lib/x86_64-linux-gnu/libdl.so.2:/lib/libdl.so.2'
-        - '/lib/x86_64-linux-gnu/libgcc_s.so.1:/lib/libgcc_s.so.1'
-        - '/usr/lib/x86_64-linux-gnu/libstdc++.so.6:/lib/libstdc++.so.6'
+      image: niteo/nixpkgs-nixos-20.03:504f993df9a5ca63317fe9c859df19daad30aa14
     steps:
-      #- uses: actions/checkout@main
       - uses: 'actions/checkout@main'
-      - run: '/__e/node12/bin/node --version'
-        #- run: nix-shell -p hello --run hello
+      - run: nix-shell -p hello --run hello
