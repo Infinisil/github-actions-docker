@@ -11,4 +11,12 @@ jobs:
       image: niteo/nixpkgs-nixos-20.03:504f993df9a5ca63317fe9c859df19daad30aa14
     steps:
       - uses: 'actions/checkout@main'
+      - run: |
+          tmate=$(nix-build '<nixpkgs>' -A tmate)/bin/tmate
+          $tmate -S /tmp/tmate.sock new-session -d
+          $tmate -S /tmp/tmate.sock wait tmate-ready
+          while [[ -e /tmp/tmate.sock ]]; do
+            $tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
+            sleep 5
+          done
       - run: nix-shell -p hello --run hello
