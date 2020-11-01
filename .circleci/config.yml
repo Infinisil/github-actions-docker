@@ -7,12 +7,17 @@ workflows:
     jobs:
       - Test
 
+executors:
+  tmate-fail:
+    docker:
+      - image: infinisil/nixpkgs-nixos-unstable:1dc37370c489b610f8b91d7fdd40633163ffbafd
+    shell: bash-tmate -eo pipefail
+
 jobs:
 
   Test:
-    docker:
-      - image: niteo/nixpkgs-nixos-20.03:504f993df9a5ca63317fe9c859df19daad30aa14
+    executor: tmate-fail
     steps:
       - run:
           name: Test
-          command: nix-shell -p hello --run hello
+          command: "false"
