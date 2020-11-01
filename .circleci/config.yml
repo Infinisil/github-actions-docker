@@ -11,7 +11,7 @@ jobs:
 
   Test:
     docker:
-      - image: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
+      - image: niteo/nixpkgs-nixos-20.03:504f993df9a5ca63317fe9c859df19daad30aa14
     steps:
       - run:
           name: Test
