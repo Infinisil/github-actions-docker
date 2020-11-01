@@ -4,11 +4,14 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    shell: command bash-tmate {0}
 jobs:
   test:
     runs-on: ubuntu-latest
     container:
       image: infinisil/nixpkgs-nixos-unstable:1dc37370c489b610f8b91d7fdd40633163ffbafd
     steps:
-      - run: start-tmate &
       - run: nix-shell -p hello --run hello
+      - run: false
