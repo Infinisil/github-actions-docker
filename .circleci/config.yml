@@ -1,0 +1,18 @@
+version: 2.1
+
+workflows:
+  version: 2
+
+  workflow:
+    jobs:
+      - Test
+
+jobs:
+
+  Test:
+    docker:
+      - image: infinisil/nixpkgs-nixos-unstable:84d74ae9c9cbed73274b8e4e00be14688ffc93fe
+    steps:
+      - run:
+          name: Test
+          command: nix-shell -p hello --run hello
